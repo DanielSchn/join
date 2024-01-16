@@ -20,6 +20,9 @@ async function initSummary() {
 }
 
 
+document.addEventListener('DOMContentLoaded', initSummary);
+
+
 /**
  * Event Listener at DOMContentLoaded to show the and hide the mobile greeting
  */
