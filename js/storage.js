@@ -1,5 +1,6 @@
 const STORAGE_URL = 'https://join-b70bc-default-rtdb.europe-west1.firebasedatabase.app/';
 
+
 /**
  * Function to save the Userdata in the remote Storage
  * @param {string} key - Keyword 'user' in the remote Storage
@@ -19,8 +20,8 @@ async function setItem(key, value) {
 
 
 /**
- * Function to load the Data from the remote Storage with the Key 'user'
- * @param {string} key - Get the Data from the Storage Keyword 'user'
+ * Function to load the Data from the remote Storage with the Key
+ * @param {string} key - Get the Data from the Storage Keyword 
  * @returns 
  */
 async function getItem(key) {
@@ -29,6 +30,11 @@ async function getItem(key) {
 }
 
 
+/**
+ * Function to delete Data from the remote Storage
+ * @param {string} key - Delete Data from the Storage with the Keyword
+ * @returns 
+ */
 async function deleteItem(key= "") {
     let response = await fetch(STORAGE_URL + key + ".json", {
         method: "DELETE",
@@ -37,13 +43,10 @@ async function deleteItem(key= "") {
 }
 
 
-async function test() {
-    const users = await getItem('users/-NwdQPriwVzCx1nSVPMS/0');
-
-    console.log(users);
-}
-
-
+/**
+ * Function for delete User data in the remote Storage
+ * @returns 
+ */
 async function clearUsers() {
     let response = await fetch(STORAGE_URL + 'users.json', {
         method: 'PUT',

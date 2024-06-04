@@ -23,11 +23,11 @@ function generateTask(element) {
                 <div class="toDoSubtasksProgressFiller" id= "toDoSubtasksProgressFiller${element['id']}">
                 </div>
             </div>  
-            <!-- closeTask(); -->
             <div class="toDoSubtasksCount">
                 <div id="toDoSubtasksDone${element["id"]}">  
                 </div>
-                /${element['subtasks'].length} Subtask
+                ${element['subtasks'].length > 0 ? '/' + element['subtasks'].length : ''}
+                 Subtask
             </div>
         </div>
         <div class="toDoBottom">
@@ -38,6 +38,7 @@ function generateTask(element) {
         </div>
     </div>`
 }
+
 
 /**
  * Generates HTML for empty Columns
@@ -51,6 +52,7 @@ function generateNoTask(status) {
                 <div class="noTask">No tasks ${status}</div>
             </div>`
 }
+
 
 /**
  * Generates HTML for Task Card
@@ -111,6 +113,7 @@ function generateTaskCard(task, id) {
     </div>`
 }
 
+
 /**
  * Generates HTML for Task Card Assigned section
  * 
@@ -127,6 +130,7 @@ function taskCardAssignedHTML(contact) {
     </div>`
     return html;
 }
+
 
 /**
  * Renders Subtask section on Task Card
@@ -154,6 +158,7 @@ function renderCardSubtasks(task, id) {
         }
 }
 
+
 /**
  * Generates HTML of add task template
  * 
@@ -166,6 +171,7 @@ function generateAddTaskTemplateAll() {
     return html
 }
 
+
 /**
  * Generates the inner HTML of add task template
  * 
@@ -176,6 +182,7 @@ function generateAddTaskTemplateInner() {
         <div class="addTaskCard" onclick="preventClosing()" style="display: none" id="addTaskCard" w3-include-html="assets/templates/add_task_template.html"></div>
     `;
 }
+
 
 /**
  * Generates the edit task header

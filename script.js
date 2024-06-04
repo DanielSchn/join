@@ -90,8 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function loadTasks() {
   try {
-     tasks = JSON.parse(await getItem('tasks'));
-    //tasks = await getItem('tasks');
+    tasks = await getItem('tasks');
   } catch (e) {
     console.error('Loading error:', e);
   }

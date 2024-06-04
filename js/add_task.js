@@ -108,7 +108,7 @@ async function deleteTask(id) {
         let task = tasks[i];
         task['id'] = i;
     }
-    await setItem('tasks', JSON.stringify(tasks));
+    await setItem('tasks', tasks);
     showToastMsg('Task deleted');
     goToBoard();
 }
@@ -268,7 +268,7 @@ async function submitTask() {
         tasks[currentId] = generateTaskJSON(currentId);
     }
     submitBtn.disabled = true;
-    await setItem('tasks', JSON.stringify(tasks));
+    await setItem('tasks', tasks);
     submitBtn.disabled = false;
     showToastMsg(message);
     goToBoard();
@@ -289,7 +289,7 @@ function generateTaskJSON(id) {
         due: addTaskDueText.value,
         prio: PRIOS[getTaskPrioId()],
         category: categories.indexOf(addTaskCategory.value),
-        subtasks: currentTask['subtasks'],
+        subtasks: currentTask['subtasks'] | [],
         timestamp: getTimestamp(),
         status: currentTask['status']
     };

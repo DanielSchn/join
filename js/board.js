@@ -26,7 +26,8 @@ async function updateHTML() {
  * Saves Changes of tasks-Array in remote storage
  */
 async function saveChanges() {
-    await setItem('tasks', JSON.stringify(tasks));
+    // await setItem('tasks', JSON.stringify(tasks));
+    await setItem('tasks', tasks);
     filteredTasks = tasks;
 }
 
