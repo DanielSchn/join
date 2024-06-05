@@ -16,15 +16,30 @@ async function initContacts() {
  */
 async function saveNewContact(isDesktopForm) {
 
-    if(isDesktopForm === true) {
+    if (isDesktopForm === true) {
         await addNewContact();
     } else {
         await mobileAddNewContact();
     }
-
     await loadContacts();
     closeAddCardOne();
     renderContacts();
+    resetForm();
+}
+
+
+/**
+ * Resets the form after a delay of 2 seconds.
+ * This function uses a delay to allow users time to view any confirmations or other actions before the form resets.
+ * The reset is performed using the form's standard `reset()` method,
+ * which sets all form elements back to their initial values.
+ */
+function resetForm() {
+    setTimeout(() => {
+        const form = document.getElementById('contactForm');
+        form.reset();
+    }, 2000);
+
 }
 
 
@@ -52,6 +67,7 @@ async function addNewContact() {
     contacts.push(newContact);
     sortContacts();
     await setItem('contacts', contacts);
+
 }
 
 
@@ -109,9 +125,9 @@ function sortContacts() {
         if (nameA > nameB) {
             return +1;
         }
-        
+
         return 0;
-    }) 
+    })
 }
 
 
